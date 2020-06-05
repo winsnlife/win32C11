@@ -3,11 +3,30 @@
 
 #include <iostream>
 #include "pch.h"
+#include "TestTime.h"
+#include "testLambda.h"
+#include "testThread.h"
+#include "testCurl.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	runThread();
+	testLambda();
+    std::cout << "Hello World11!\n";
+	testTime();
 	testAuto();
+	testMap();
+	testSet();
+	testVector();
+	testDeque();
+
+	testQueue();
+	testList();
+
+	testIterator();
+
+	char fname[] = "I:\curl.text";
+	getUrl(fname);
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单

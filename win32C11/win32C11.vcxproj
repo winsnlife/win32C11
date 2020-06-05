@@ -75,6 +75,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>I:\CppProjects\win32C11\win32C11\include;$(IncludePath)</IncludePath>
+    <SourcePath>I:\CppProjects\win32C11\win32C11\src;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -89,13 +91,16 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;BUILDING_LIBCURL;HTTP_ONLY;CURL_STATICLIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\Dll1C11;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>I:\CppProjects\win32C11\win32C11\include;I:\cSolution\mrcp\plugin-Alirecog\unimrcp-1.6.0\plugins\Alirecog\aliSdk2.0\NlsSdkCpp2.0\include\curl;I:\cSolution\mrcp\plugin-Alirecog\unimrcp-1.6.0\plugins\Alirecog\aliSdk2.0\NlsSdkCpp2.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>I:\cSolution\mrcp\plugin-Alirecog\unimrcp-1.6.0\plugins\Alirecog\aliSdk2.0\NlsSdkCpp2.0\lib\windows\14.0\x86\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -105,12 +110,16 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;CURL_STATICLIB;BUILDING_LIBCURL;HTTP_ONLY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>I:\cSolution\mrcp\plugin-Alirecog\unimrcp-1.6.0\plugins\Alirecog\aliSdk2.0\NlsSdkCpp2.0\include\json;I:\cSolution\mrcp\plugin-Alirecog\unimrcp-1.6.0\plugins\Alirecog\aliSdk2.0\NlsSdkCpp2.0\include\pthread;I:\cSolution\mrcp\plugin-Alirecog\unimrcp-1.6.0\plugins\Alirecog\aliSdk2.0\NlsSdkCpp2.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>I:\cSolution\mrcp\plugin-Alirecog\unimrcp-1.6.0\plugins\Alirecog\aliSdk2.0\NlsSdkCpp2.0\lib\windows\14.0\x64\pthread;I:\cSolution\mrcp\plugin-Alirecog\unimrcp-1.6.0\plugins\Alirecog\aliSdk2.0\NlsSdkCpp2.0\lib\windows\14.0\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libcurl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -152,12 +161,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="win32C11.cpp" />
+    <ClCompile Include="src\pch.cpp" />
+    <ClCompile Include="src\testCurl.cpp" />
+    <ClCompile Include="src\testLambda.cpp" />
+    <ClCompile Include="src\TestThread.cpp" />
+    <ClCompile Include="src\TestTime.cpp" />
+    <ClCompile Include="src\win32C11.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Dll1C11\Dll1C11.vcxproj">
-      <Project>{2fe25563-5f7b-44f3-a979-f4cc34bf61c7}</Project>
-    </ProjectReference>
+    <ClInclude Include="include\pch.h" />
+    <ClInclude Include="include\testCurl.h" />
+    <ClInclude Include="include\testLambda.h" />
+    <ClInclude Include="include\TestThread.h" />
+    <ClInclude Include="include\TestTime.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
